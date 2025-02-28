@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Smart Irrigation</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <!-- Remix Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css">
+
+    <style>
+        /* Add a background image to the body */
+        body {
+            background-image: url('https://images.unsplash.com/photo-1464226184884-fa280b87c399?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        /* Add a semi-transparent overlay to make text readable */
+        .overlay {
+            background-color: rgba(255, 255, 255, 0.8); /* White with 80% opacity */
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: #f8f9fa;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .navbar-brand {
+            font-weight: bold;
+        }
+        .nav-link.active {
+            font-weight: bold;
+        }
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .swiper-slide img {
+            width: 100%;
+            height: 300px; /* Adjust the height as needed */
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Center align the About Us paragraph */
+        .about-us {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Full-width footer */
+        footer {
+            width: 100%;
+            background-color: grey;
+            color: whitesmoke;
+            padding: 20px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Smart Irrigation</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+            <i class="ri-menu-3-line" id="menu-icon"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                </li>
+            
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                        View
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="input.html">Value Input</a></li>
+                        <li><a class="dropdown-item" href="realtime.html">Real-Time Data</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="control.html">Control</a>
+                </li>
+            </ul>
+  
+           
+</nav>
+
+         
+
+<!-- Swiper Slider with Images -->
+<div class="container mt-5 overlay">
+    <div class="swiper card-wrapper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="https://ik.imagekit.io/tractorkarvan/tr:f-webp/images/Blogs/Indian-Agriculture-with-Modern-TechnologY.jpg" alt="Watering Plants"></div>
+            <div class="swiper-slide"><img src="https://media.istockphoto.com/id/652966504/photo/watering-field.jpg?s=612x612&w=0&k=20&c=PNFefnQW26DKSsXhxwitETDLuMWHckVOkQR8Ds7ylQc=" alt="Watering Plants"></div>
+            <div class="swiper-slide"><img src="https://img.freepik.com/premium-photo/farmer-sprays-pesticides-plantation-use-chemicals-protection-plants-from-insects-fungal-infections-farm-work-field-pesticides-fungicides-agriculture-agro-industry_72572-2523.jpg?w=1380" alt="Watering Plants"></div>
+            <div class="swiper-slide"><img src="https://img.freepik.com/free-photo/farmer-barley-field-enjoying-great-harvest_1150-8131.jpg?t=st=1740568078~exp=1740571678~hmac=ccf53cd3d7daa99e7c01c4506fe28fb660fffd68c2e57f932446bc08c3096eb1&w=1380" alt="Watering Plants"></div>
+            <div class="swiper-slide"><img src="https://img.freepik.com/free-photo/green-field-with-water-sprinklers-surrounded-by-trees-canary-islands-spain_181624-12448.jpg?t=st=1740568116~exp=1740571716~hmac=9c9e4d68b6af22d99d3ca844c393028916d8f03b5d2acd6dccf3a0106764170e&w=1380" alt="Watering Plants"></div>
+            <div class="swiper-slide"><img src="https://img.freepik.com/premium-photo/indian-farmer-working-green-pigeon-peas-field-with-bullock_54391-6534.jpg?w=1380" alt="Watering Plants"></div>
+            <div class="swiper-slide"><img src="https://c4.wallpaperflare.com/wallpaper/877/650/377/nature-water-green-garden-wallpaper-thumb.jpg" alt="Watering Plants"></div>
+            <div class="swiper-slide"><img src="https://img.freepik.com/free-photo/top-view-vegetable-composition-with-fresh-fruits-blue-table_140725-136592.jpg?t=st=1740568338~exp=1740571938~hmac=9abb0c17dd2372c1e5763bd473581907ee07a9756684b19dea5a2f94d2202ff7&w=1380" alt="Watering Plants"></div>
+        </div>
+
+        <!-- Swiper Pagination -->
+        <div class="swiper-pagination"></div>
+
+        <!-- Swiper Navigation Buttons -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+</div>
+
+<!-- About Us Section -->
+<div class="about-us overlay">
+    <h2>ABOUT US</h2>
+    <p>Agriculture is a crucial sector that heavily relies on efficient water management. Traditional irrigation methods often lead to excessive water usage or inadequate irrigation, affecting crop yield and resource conservation. This paper presents a Smart Irrigation System that automates the irrigation process by monitoring soil moisture levels and optimizing water usage. The system employs soil moisture sensors to continuously assess the soil's moisture content. When the moisture level drops below a predefined threshold—set by the farmer based on crop requirements and soil texture—the system automatically activates the irrigation process. Once the desired moisture level is restored, the system shuts off the water supply, preventing over-irrigation. The system can be integrated with a microcontroller, wireless communication modules, and a mobile application for remote monitoring and control. By automating irrigation, this solution enhances water efficiency, reduces manual labor, and ensures optimal crop growth. Additionally, it contributes to sustainable farming by conserving water resources and improving agricultural productivity. The proposed system is cost-effective and scalable, making it suitable for both small-scale and large-scale farming applications. Experimental results demonstrate its reliability and effectiveness in maintaining soil moisture within the desired range, ultimately benefiting farmers through improved crop yield and resource management.</p>
+</div>
+
+<!-- Footer -->
+<footer>
+    <h3>Developed By Group 6</h3>
+</footer>
+
+<!-- Bootstrap & Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+    // Initialize Swiper
+    new Swiper('.card-wrapper', {
+        loop: true,
+        spaceBetween: 30,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev'
+        },
+        breakpoints: {
+            0: { slidesPerView: 1 },
+            768: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 }
+        }
+    });
+
+    // Navbar Icon Toggle
+    const menuIcon = document.querySelector("#menu-icon");
+
+    menuIcon.addEventListener('click', () => {
+        menuIcon.classList.toggle("ri-menu-3-line");
+        menuIcon.classList.toggle("ri-close-line");
+    });
+</script>
+
+</body>
+</html>

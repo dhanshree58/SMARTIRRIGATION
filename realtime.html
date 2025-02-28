@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Smart Irrigation</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <!-- Remix Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css">
+
+    <style>
+        .navbar {
+            background-color: #f8f9fa;
+        }
+        .navbar-brand {
+            font-weight: bold;
+        }
+        .nav-link.active {
+            font-weight: bold;
+        }
+ 
+       
+     
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background: url('https://pixelz.cc/wp-content/uploads/2018/07/rice-farmer-vietnam-uhd-4k-wallpaper.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100vh;
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+            width: 400px;
+            margin: auto;
+        }
+        .title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .slider-container {
+            width: 100%;
+        }
+        input[type="range"] {
+            width: 100%;
+            /* -webkit-appearance: none; */
+            height: 12px;
+            background: #4CAF50;
+            border-radius: 6px;
+            outline: none;
+            transition: 0.3s;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 24px;
+            height: 24px;
+            background: #FFD700;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .value {
+            font-size: 22px;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+        .emoji {
+            font-size: 70px;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+ 
+        /* Full-width footer */
+        footer {
+            
+            width: 100%;
+            background-color: grey;
+            color: whitesmoke;
+            padding: 15px 0;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+      
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Smart Irrigation</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+            <i class="ri-menu-3-line" id="menu-icon"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                </li>
+            
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                        View
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="input.html">Value Input</a></li>
+                        <li><a class="dropdown-item" href="realtime.html">Real-Time Data</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="control.html">Control</a>
+                </li>
+            </ul>
+  
+           
+</nav>
+
+
+    <div class="container">
+        <div class="title">🌱 Moisture Level Monitor</div>
+        <div class="slider-container">
+            <input type="range" id="rangeSlider" min="0" max="100" value="50">
+            <div class="value">Moisture Level: <span id="sliderValue">50</span>%</div>
+            <div class="emoji" id="emoji">😐</div>
+        </div>
+    </div>
+    
+    <script>
+        const slider = document.getElementById("rangeSlider");
+        const output = document.getElementById("sliderValue");
+        const emoji = document.getElementById("emoji");
+        
+        function updateMoistureLevel() {
+            fetch('/get-moisture-level') // Assume backend API provides real-time data
+                .then(response => response.json())
+                .then(data => {
+                    const value = data.moisture;
+                    slider.value = value;
+                    output.textContent = value;
+                    
+                    if (value < 60) {
+                        emoji.textContent = "😢"; // Sad face
+                    } else if (value >= 60 && value <= 90) {
+                        emoji.textContent = "😊"; // Smile face
+                    } else {
+                        emoji.textContent = "🤩"; // Star-struck face
+                    }
+                });
+        }
+        
+        setInterval(updateMoistureLevel, 5000); // Fetch data every 5 seconds
+    </script>
+
+<!-- Footer -->
+<footer>
+    <h3>Developed By Group 6</h3>
+</footer>
+
+<!-- Bootstrap & Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

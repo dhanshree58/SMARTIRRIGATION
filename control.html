@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Smart Irrigation</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        /* Full-screen background */
+        body {
+            background: url("https://www.shutterstock.com/image-photo/lush-rice-paddy-field-neat-600nw-2499404003.jpg") no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        /* Fixed Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: #f8f9fa;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Push content down to avoid navbar overlap */
+        .content-box {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin-top: 80px;
+        }
+
+        /* Toggle switch styling */
+        .toggle-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .toggle {
+            width: 80px;
+            height: 40px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .toggle input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: 0.4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+            left: 5px;
+            bottom: 5px;
+            background-color: white;
+            transition: 0.4s;
+        }
+
+        input:checked + .slider {
+            background-color: #4CAF50;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(40px);
+        }
+
+        /* Emoji styling */
+        .emoji {
+            font-size: 25px;
+        }
+
+        /* Footer */
+        footer {
+            width: 100%;
+            background-color: grey;
+            color: whitesmoke;
+            padding: 10px 0;
+            text-align: center;
+            position: absolute;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Smart Irrigation</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+            <i class="ri-menu-3-line" id="menu-icon"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                </li>
+            
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                        View
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="input.html">Value Input</a></li>
+                        <li><a class="dropdown-item" href="realtime.html">Real-Time Data</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="control.html">Control</a>
+                </li>
+            </ul>
+  
+           
+</nav>
+
+<!-- Main Content -->
+<div class="content-box">
+    <h2>Water Flow Status</h2>
+    <div class="toggle-container">
+        <label class="toggle">
+            <input type="checkbox" id="toggleSwitch" onclick="toggleFunction()">
+            <span class="slider"></span>
+        </label>
+        <p id="toggleStatus"><span class="emoji">😟</span> OFF</p>
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    function toggleFunction() {
+        const toggle = document.getElementById('toggleSwitch');
+        const statusText = document.getElementById('toggleStatus');
+        
+        if (toggle.checked) {
+            statusText.innerHTML = '<span class="emoji">😊</span> ON';
+        } else {
+            statusText.innerHTML = '<span class="emoji">😟</span> OFF';
+        }
+
+        // Send request to backend
+        fetch('/toggle_motor', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ motor_status: toggle.checked ? "ON" : "OFF" })
+        })
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => console.error('Error:', error));
+    }
+</script>
+
+<!-- Footer -->
+<footer>
+    <h3>Developed By Group 6</h3>
+</footer>
+
+</body>
+</html>
